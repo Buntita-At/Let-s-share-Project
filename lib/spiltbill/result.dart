@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:lets_share/home/home.dart';
 
 class ResultPage extends StatefulWidget {
   final String bill;
   final double friends;
+
   ResultPage(this.bill, this.friends);
 
   @override
@@ -11,16 +12,15 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  String dividedAmount = ''; // Use camelCase for variable names
+  String dividedAmount = '';
 
   @override
   void initState() {
     super.initState();
-    divideAmount(); // Call the function with camelCase name
+    divideAmount();
   }
 
   void divideAmount() {
-    // Add return type for clarity
     double finalBill = double.parse(widget.bill) / widget.friends;
     setState(() {
       dividedAmount = finalBill.toStringAsFixed(2);
@@ -31,8 +31,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: 20), // Use symmetric for left and right margin
+        margin: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -41,7 +40,7 @@ class _ResultPageState extends State<ResultPage> {
               margin: EdgeInsets.only(top: 40),
               child: Text(
                 "Result",
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w700,
                 ),
@@ -63,14 +62,14 @@ class _ResultPageState extends State<ResultPage> {
                       children: [
                         Text(
                           "Equally Divide",
-                          style: GoogleFonts.montserrat(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                         Text(
                           "\$$dividedAmount",
-                          style: GoogleFonts.montserrat(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
@@ -85,25 +84,15 @@ class _ResultPageState extends State<ResultPage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                                "Friends"), // Removed style since it's not defined
-                            Text(
-                                "Friends"), // Removed style since it's not defined
-                            Text(
-                                "Friends"), // Removed style since it's not defined
+                            Text("Friends"),
+                            Text(widget.friends.round().toString()),
                           ],
                         ),
                         SizedBox(width: 15),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(widget.friends
-                                .round()
-                                .toString()), // Added widget.
-                            Text(
-                                "14 %"), // Removed style since it's not defined
-                            Text(
-                                "Friends"), // Removed style since it's not defined
+                            Text("14 %"),
                           ],
                         ),
                       ],
